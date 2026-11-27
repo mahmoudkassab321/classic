@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>المنيو | كلاسيك فود بعلبك</title>
+<meta name="description" content="The full Classic Food Baalbek menu — burgers, sandwiches, pizza, grills, shawarma, sushi, juices, cocktails, hookah, crepes, waffles and ice cream.">
+<meta name="theme-color" content="#0d0c0a">
+<link rel="icon" href="images/brand/icon.png">
+<link rel="apple-touch-icon" href="images/brand/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/intro.js"></script>
+</head>
+<body data-page="menu">
+<header class="topbar"></header>
+
+<main>
+  <section class="page-hero">
+    <div class="bg"><img src="images/hero/menu.webp" alt=""></div>
+    <div class="wrap">
+      <span class="eyebrow" data-t="m_eyebrow"></span>
+      <h1 data-t="m_title"></h1>
+      <p data-t="m_lead"></p>
+    </div>
+  </section>
+
+  <div class="menu-sticky">
+    <div class="cat-tabs" id="catTabs" role="tablist"></div>
+    <div class="sec-chips" id="secChips"></div>
+  </div>
+
+  <section class="sec-beige" style="padding-bottom:70px">
+    <div class="wrap">
+      <div class="menu-tools">
+        <label class="search">
+          <span class="sr-only" data-t="search"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 0 1 6.3 12.9l5.4 5.4-1.4 1.4-5.4-5.4A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
+          <input id="search" type="search" autocomplete="off" enterkeyhint="search" data-tp="search">
+          <button id="clearSearch" class="clear" type="button" aria-label="Clear" hidden>×</button>
+        </label>
+        <div class="view-toggle" role="group" aria-label="View">
+          <button type="button" data-view="grid" class="on" aria-label="Grid"><svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm10 0h8v8h-8z"/></svg></button>
+          <button type="button" data-view="list" aria-label="List"><svg viewBox="0 0 24 24"><path d="M3 4h18v3H3zm0 6.5h18v3H3zM3 17h18v3H3z"/></svg></button>
+        </div>
+      </div>
+      <div id="menuBody"></div>
+      <p class="note-usd" data-t="usd"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"></footer>
+<div class="sheet" id="sheet" hidden></div>
+
+<script src="js/common.js"></script>
+<script src="js/dish.js"></script>
+<script src="js/menu.js"></script>
+</body>
+</html>
