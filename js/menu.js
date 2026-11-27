@@ -17,8 +17,7 @@
 
   const COVER = { 11: "s21", 116: "s49", 12: "s10", 13: "s13", 17: "s6", 111: "s42" };
   const FALLBACK = { 11: "s21", 116: "s49", 12: "s9", 13: "s13", 17: "s6", 111: "s42" };
-  let data, cat, view = "grid", query = "";
-  try { view = localStorage.getItem("cf_view") || "grid"; } catch (e) {}
+  let data, cat, query = "";
 
   const $ = (id) => document.getElementById(id);
   const body = $("menuBody"), tabs = $("catTabs"), chips = $("secChips"), search = $("search"), clr = $("clearSearch");
@@ -27,17 +26,11 @@
 
   function sectionHTML(s, c, items) {
     const { esc } = CF;
-    const withImg = view === "grid" ? items.filter((i) => i.img) : [];
-    const noImg = view === "grid" ? items.filter((i) => !i.img) : items;
     const img = s.img || `images/sections/${FALLBACK[c.id]}.webp`;
     let h = `<section class="msec" id="s${s.id}" data-sec="${s.id}">
       <div class="msec-head"><img src="${img}" alt="" loading="lazy"><div>
         <h2>${esc(CF.dish.secName(s))}</h2><span class="count">${items.length} ${CF.t("items")}</span></div></div>`;
-    if (withImg.length) h += `<div class="grid">${withImg.map(CF.dish.card).join("")}</div>`;
-    if (noImg.length) {
-      const title = view === "grid" && withImg.length ? `<div class="rows-title">${CF.t("more")}</div>` : "";
-      h += `<div class="rows">${title}${noImg.map(CF.dish.row).join("")}</div>`;
-    }
+    h += `<div class="rows">${items.map(CF.dish.row).join("")}</div>`;
     return h + `</section>`;
   }
 
@@ -111,15 +104,6 @@
     t = setTimeout(() => { query = search.value.trim(); clr.hidden = !query; render(); }, 140);
   });
   clr.addEventListener("click", () => { search.value = ""; query = ""; clr.hidden = true; render(); search.focus(); });
-  document.querySelectorAll("[data-view]").forEach((b) => {
-    b.classList.toggle("on", b.dataset.view === view);
-    b.addEventListener("click", () => {
-      view = b.dataset.view; try { localStorage.setItem("cf_view", view); } catch (e) {}
-      document.querySelectorAll("[data-view]").forEach((x) => x.classList.toggle("on", x === b));
-      render();
-    });
-  });
-
   CF.onLang(render);
   CF.loadMenu().then((d) => {
     data = d; CF.dish.register(d);

@@ -25,14 +25,15 @@
     </button>`;
   }
 
+  const CAM = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/></svg>';
   function row(it) {
-    const media = it.img
-      ? `<span class="thumb"><img src="${it.img}" alt="" loading="lazy" decoding="async"></span>`
-      : "";
-    return `<button class="row" type="button" data-id="${it.id}">${media}
-      <span class="rt"><h4>${esc(name(it))}${it.new ? `<span class="tag-new">${CF.t("new_badge")}</span>` : ""}</h4>
-      ${desc(it) ? `<p class="dd">${esc(desc(it))}</p>` : ""}</span>
-      <span class="leader">${money(it.p)}</span></button>`;
+    return `<button class="row" type="button" data-id="${it.id}">
+      <span class="rt">
+        <span class="rline"><span class="nm">${esc(name(it))}</span>${it.new ? `<span class="tag-new">${CF.t("new_badge")}</span>` : ""}
+          <span class="dots" aria-hidden="true"></span>${money(it.p)}</span>
+        ${desc(it) ? `<p class="dd">${esc(desc(it))}</p>` : ""}
+      </span>
+      <span class="chev" aria-hidden="true">${it.img ? CAM : "›"}</span></button>`;
   }
 
   // ---------- sheet ----------
